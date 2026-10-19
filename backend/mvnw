@@ -1,0 +1,11 @@
+#!/bin/sh
+# Portable Maven wrapper script
+MAVEN_BIN="/Users/dhanish/.m2/wrapper/dists/apache-maven-3.9.9-bin/4nf9hui3q3djbarqar9g711ggc/apache-maven-3.9.9/bin/mvn"
+if command -v mvn >/dev/null 2>&1; then
+    exec mvn "$@"
+elif [ -x "$MAVEN_BIN" ]; then
+    exec "$MAVEN_BIN" "$@"
+else
+    echo "Error: Maven is not installed in PATH or standard wrapper location." >&2
+    exit 1
+fi
